@@ -45,8 +45,16 @@ public class Generator {
     }
 
     public String generatePassword() {
-        //Generate random values (inclusive, exclusive)
-        int random = rng.nextInt(0,1);
+        getRandomLetter(true);
+        return "";
+    }
+
+    private char getRandomLetter(boolean isLower) {
+        int random = rng.nextInt(65,90);
+
+        System.out.println((char) random);
+
+        return 'C';
     }
 
 }

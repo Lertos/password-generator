@@ -1,14 +1,18 @@
 package com.lertos.passwordgenerator;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class Controller {
     @FXML
-    private Label welcomeText;
+    private Button randomizeButton;
+    private Generator generator = new Generator(true, false, false, false);
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void onButtonClick(ActionEvent e) {
+        if (e.getSource().equals(randomizeButton)) {
+            generator.generatePassword();
+        }
     }
 }
