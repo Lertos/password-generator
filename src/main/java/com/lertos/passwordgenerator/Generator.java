@@ -6,8 +6,6 @@ public class Generator {
 
     private Random rng;
 
-    private String currentPassword;
-
     private boolean useLowercase;
     private boolean useUppercase;
     private boolean useNumbers;
@@ -15,8 +13,6 @@ public class Generator {
 
     public Generator(boolean useLowercase, boolean useUppercase, boolean useNumbers, boolean useSymbols) {
         this.rng = new Random();
-
-        this.currentPassword = "";
 
         this.useLowercase = useLowercase;
         this.useUppercase = useUppercase;
@@ -40,21 +36,20 @@ public class Generator {
         this.useSymbols = useSymbols;
     }
 
-    public String getCurrentPassword() {
-        return currentPassword;
-    }
-
     public String generatePassword(int length) {
-        getRandomLetter(true);
-        return "";
+        StringBuilder newPassword = new StringBuilder();
+
+        for (int i=0; i<length; i++) {
+            newPassword.append(getRandomLetter(true));
+        }
+
+        return newPassword.toString();
     }
 
     private char getRandomLetter(boolean isLower) {
         int random = rng.nextInt(65,90);
 
-        System.out.println((char) random);
-
-        return 'C';
+        return (char) random;
     }
 
 }

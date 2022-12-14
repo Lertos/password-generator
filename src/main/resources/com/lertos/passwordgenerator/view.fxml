@@ -63,7 +63,7 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
-            <Label text="&lt;pwd&gt;">
+            <Label fx:id="labelPassword">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

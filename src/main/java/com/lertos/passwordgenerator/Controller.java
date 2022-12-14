@@ -13,6 +13,9 @@ public class Controller {
     private Slider sliderPasswordLength;
     @FXML
     private Label labelPasswordLength;
+    @FXML
+    private Label labelPassword;
+
     private Generator generator = new Generator(true, false, false, false);
 
     @FXML
@@ -35,8 +38,10 @@ public class Controller {
     }
 
     private void regeneratePassword() {
-        int initialSliderValue = (int) sliderPasswordLength.getValue();
+        int passwordLength = (int) sliderPasswordLength.getValue();
+        String newPassword = generator.generatePassword(passwordLength);
 
-        labelPasswordLength.setText(String.valueOf(initialSliderValue));
+        labelPasswordLength.setText(String.valueOf(passwordLength));
+        labelPassword.setText(newPassword);
     }
 }
