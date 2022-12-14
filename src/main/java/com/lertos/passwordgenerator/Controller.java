@@ -1,5 +1,7 @@
 package com.lertos.passwordgenerator;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,8 +20,20 @@ public class Controller {
 
     private Generator generator = new Generator(true, false, false, false);
 
+    private int currentSliderValue = 0;
+
     @FXML
     public void initialize() {
+        sliderPasswordLength.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    public void changed(ObservableValue<? extends Number > observable, Number oldValue, Number newValue) {
+                        if (currentSliderValue != newValue.intValue()) {
+                            currentSliderValue = newValue.intValue();
+                            regeneratePassword();
+                        }
+                    }
+                });
+
         regeneratePassword();
     }
 
@@ -32,15 +46,10 @@ public class Controller {
         //Copy button
     }
 
-    @FXML
-    protected void onSliderChange() {
-        regeneratePassword();
-    }
-
     private void regeneratePassword() {
         int passwordLength = (int) sliderPasswordLength.getValue();
         String newPassword = generator.generatePassword(passwordLength);
-
+        System.out.println(newPassword);
         labelPasswordLength.setText(String.valueOf(passwordLength));
         labelPassword.setText(newPassword);
     }
