@@ -49,7 +49,7 @@ public class Controller {
     private void regeneratePassword() {
         int passwordLength = (int) sliderPasswordLength.getValue();
         String newPassword = generator.generatePassword(passwordLength);
-        System.out.println(newPassword);
+
         labelPasswordLength.setText(String.valueOf(passwordLength));
         labelPassword.setText(newPassword);
     }
