@@ -46,15 +46,19 @@
       </HBox>
       <VBox alignment="CENTER" GridPane.rowIndex="1">
          <children>
-            <Label text="Length of Password" />
-            <Slider blockIncrement="5.0" majorTickUnit="5.0" max="35.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Length of Password = " />
+                  <Label fx:id="labelPasswordLength" layoutX="91.0" layoutY="10.0" />
+               </children>
+            </HBox>
+            <Slider fx:id="sliderPasswordLength" blockIncrement="1.0" majorTickUnit="5.0" max="35.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
             <Button fx:id="randomizeButton" mnemonicParsing="false" onAction="#onButtonClick" text="Randomize" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Copy" />
-            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
          </children>
       </HBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">

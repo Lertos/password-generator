@@ -44,7 +44,7 @@ public class Generator {
         return currentPassword;
     }
 
-    public String generatePassword() {
+    public String generatePassword(int length) {
         getRandomLetter(true);
         return "";
     }
