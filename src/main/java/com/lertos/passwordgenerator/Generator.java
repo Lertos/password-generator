@@ -61,34 +61,34 @@ public class Generator {
         StringBuilder newPassword = new StringBuilder();
 
         for (int i=0; i<length; i++) {
-            newPassword.append(getRandomLetter(true));
+            newPassword.append(Character.valueOf((char) getRandomLetter(true)));
         }
 
         return newPassword.toString();
     }
 
-    private char getRandomLetter(boolean isLower) {
+    private int getRandomLetter(boolean isLower) {
         int random = 0;
 
         if (isLower)
-            rng.nextInt(97,123);
+            random = rng.nextInt(97,123);
         else
-            rng.nextInt(65,90);
+            random = rng.nextInt(65,90);
 
-        return (char) random;
+        return random;
     }
 
-    private char getRandomNumber() {
+    private int getRandomNumber() {
         int random = rng.nextInt(48,58);
 
-        return (char) random;
+        return random;
     }
 
-    private char getRandomSymbol() {
+    private int getRandomSymbol() {
         int random = rng.nextInt(0, symbolAsciiCharacters.size());
         int randomSymbolKey = symbolAsciiCharacters.get(random);
 
-        return (char) randomSymbolKey;
+        return randomSymbolKey;
     }
 
 }
