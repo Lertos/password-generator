@@ -27,12 +27,19 @@ public class Controller {
     @FXML
     private Label labelPassword;
 
-    private Generator generator = new Generator(true, false, false, false);
+    private Generator generator = new Generator();
 
     private int currentSliderValue = 0;
 
     @FXML
     public void initialize() {
+        //Set the initial values of the desired checkboxes
+        cbLowercase.setSelected(true);
+        cbUppercase.setSelected(true);
+        cbNumbers.setSelected(true);
+        cbSymbols.setSelected(true);
+
+        //Set the initial slider value
         sliderPasswordLength.valueProperty().addListener(
                 new ChangeListener<Number>() {
                     public void changed(ObservableValue<? extends Number > observable, Number oldValue, Number newValue) {
@@ -43,6 +50,7 @@ public class Controller {
                     }
                 });
 
+        //Generate the initial password
         regeneratePassword();
     }
 
@@ -60,30 +68,30 @@ public class Controller {
         //Lowercase
         if (e.getSource().equals(cbLowercase)) {
             if (cbLowercase.isSelected())
-                generator.setUseLowercase(true);
+                generator.updateCharTypeList(CharType.LOWERCASE, true);
             else
-                generator.setUseLowercase(false);
+                generator.updateCharTypeList(CharType.LOWERCASE, false);
         }
         //Uppercase
         else if (e.getSource().equals(cbUppercase)) {
             if (cbUppercase.isSelected())
-                generator.setUseUppercase(true);
+                generator.updateCharTypeList(CharType.UPPERCASE, true);
             else
-                generator.setUseUppercase(false);
+                generator.updateCharTypeList(CharType.UPPERCASE, false);
         }
         //Numbers
         else if (e.getSource().equals(cbNumbers)) {
             if (cbNumbers.isSelected())
-                generator.setUseNumbers(true);
+                generator.updateCharTypeList(CharType.NUMBER, true);
             else
-                generator.setUseNumbers(false);
+                generator.updateCharTypeList(CharType.NUMBER, false);
         }
         //Symbols
         else if (e.getSource().equals(cbSymbols)) {
             if (cbSymbols.isSelected())
-                generator.setUseSymbols(true);
+                generator.updateCharTypeList(CharType.SYMBOL, true);
             else
-                generator.setUseSymbols(false);
+                generator.updateCharTypeList(CharType.SYMBOL, false);
         }
     }
 

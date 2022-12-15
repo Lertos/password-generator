@@ -4,26 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+enum CharType {
+    LOWERCASE,
+    UPPERCASE,
+    NUMBER,
+    SYMBOL
+}
+
 public class Generator {
 
     private List<Integer> symbolAsciiCharacters;
+    private List<CharType> listsToGenerateFrom;
 
     private Random rng;
 
-    private boolean useLowercase;
-    private boolean useUppercase;
-    private boolean useNumbers;
-    private boolean useSymbols;
-
-    public Generator(boolean useLowercase, boolean useUppercase, boolean useNumbers, boolean useSymbols) {
+    public Generator() {
         this.symbolAsciiCharacters = createSymbolSet();
+        this.listsToGenerateFrom = new ArrayList<>();
 
         this.rng = new Random();
-
-        this.useLowercase = useLowercase;
-        this.useUppercase = useUppercase;
-        this.useNumbers = useNumbers;
-        this.useSymbols = useSymbols;
     }
 
     private List<Integer> createSymbolSet() {
@@ -41,26 +40,19 @@ public class Generator {
         return symbolList;
     }
 
-    public void setUseLowercase(boolean useLowercase) {
-        this.useLowercase = useLowercase;
-    }
-
-    public void setUseUppercase(boolean useUppercase) {
-        this.useUppercase = useUppercase;
-    }
-
-    public void setUseNumbers(boolean useNumbers) {
-        this.useNumbers = useNumbers;
-    }
-
-    public void setUseSymbols(boolean useSymbols) {
-        this.useSymbols = useSymbols;
+    public void updateCharTypeList(CharType type, boolean value) {
+        if (value)
+            listsToGenerateFrom.add(type);
+        else
+            listsToGenerateFrom.remove(type);
     }
 
     public String generatePassword(int length) {
         StringBuilder newPassword = new StringBuilder();
-
+        int random;
         for (int i=0; i<length; i++) {
+            random = rng.nextInt(0, 4);
+
             newPassword.append(Character.valueOf((char) getRandomLetter(true)));
         }
 
