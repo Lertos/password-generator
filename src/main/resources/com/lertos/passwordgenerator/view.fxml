@@ -28,8 +28,8 @@
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0">
                <children>
-                  <CheckBox fx:id="cbLowercase" alignment="CENTER" mnemonicParsing="false" text="Lowercase" />
-                  <CheckBox fx:id="cbUppercase" mnemonicParsing="false" text="Uppercase">
+                  <CheckBox fx:id="cbLowercase" alignment="CENTER" mnemonicParsing="false" onAction="#onCheckboxClick" selected="true" text="Lowercase" />
+                  <CheckBox fx:id="cbUppercase" mnemonicParsing="false" onAction="#onCheckboxClick" selected="true" text="Uppercase">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -38,8 +38,8 @@
             </VBox>
             <VBox alignment="CENTER_LEFT" layoutX="117.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0">
                <children>
-                  <CheckBox fx:id="cbNumbers" mnemonicParsing="false" text="Numbers" />
-                  <CheckBox fx:id="cbSymbols" layoutX="10.0" layoutY="44.0" mnemonicParsing="false" text="Symbols" />
+                  <CheckBox fx:id="cbNumbers" mnemonicParsing="false" onAction="#onCheckboxClick" selected="true" text="Numbers" />
+                  <CheckBox fx:id="cbSymbols" layoutX="10.0" layoutY="44.0" mnemonicParsing="false" onAction="#onCheckboxClick" selected="true" text="Symbols" />
                </children>
             </VBox>
          </children>

@@ -48,12 +48,24 @@ public class Generator {
     }
 
     public String generatePassword(int length) {
-        StringBuilder newPassword = new StringBuilder();
-        int random;
-        for (int i=0; i<length; i++) {
-            random = rng.nextInt(0, 4);
+        if (listsToGenerateFrom.size() == 0)
+            return null;
 
-            newPassword.append(Character.valueOf((char) getRandomLetter(true)));
+        StringBuilder newPassword = new StringBuilder();
+        CharType random;
+        int type;
+
+        for (int i=0; i<length; i++) {
+            random = listsToGenerateFrom.get(rng.nextInt(listsToGenerateFrom.size()));
+
+            type = switch (random) {
+                case LOWERCASE -> getRandomLetter(true);
+                case UPPERCASE -> getRandomLetter(false);
+                case NUMBER -> getRandomNumber();
+                case SYMBOL -> getRandomSymbol();
+            };
+
+            newPassword.append(Character.valueOf((char) type));
         }
 
         return newPassword.toString();

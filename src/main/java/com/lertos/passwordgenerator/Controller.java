@@ -33,11 +33,11 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        //Set the initial values of the desired checkboxes
-        cbLowercase.setSelected(true);
-        cbUppercase.setSelected(true);
-        cbNumbers.setSelected(true);
-        cbSymbols.setSelected(true);
+        //Fire the events manually so the initial values will be set in the generator
+        cbLowercase.fireEvent(new ActionEvent());
+        cbUppercase.fireEvent(new ActionEvent());
+        cbNumbers.fireEvent(new ActionEvent());
+        cbSymbols.fireEvent(new ActionEvent());
 
         //Set the initial slider value
         sliderPasswordLength.valueProperty().addListener(
@@ -93,6 +93,9 @@ public class Controller {
             else
                 generator.updateCharTypeList(CharType.SYMBOL, false);
         }
+
+        //Generate a new password with the new settings
+        regeneratePassword();
     }
 
     private void regeneratePassword() {
