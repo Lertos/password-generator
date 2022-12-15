@@ -5,12 +5,21 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 public class Controller {
     @FXML
     private Button randomizeButton;
+    @FXML
+    private CheckBox cbLowercase;
+    @FXML
+    private CheckBox cbUppercase;
+    @FXML
+    private CheckBox cbNumbers;
+    @FXML
+    private CheckBox cbSymbols;
     @FXML
     private Slider sliderPasswordLength;
     @FXML
@@ -44,6 +53,26 @@ public class Controller {
             regeneratePassword();
         }
         //Copy button
+    }
+
+    @FXML
+    protected void onCheckboxClick(ActionEvent e) {
+        //Lowercase
+        if (e.getSource().equals(cbLowercase)) {
+
+        }
+        //Uppercase
+        else if (e.getSource().equals(cbUppercase)) {
+
+        }
+        //Numbers
+        else if (e.getSource().equals(cbNumbers)) {
+
+        }
+        //Symbols
+        else if (e.getSource().equals(cbSymbols)) {
+
+        }
     }
 
     private void regeneratePassword() {
