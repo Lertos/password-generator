@@ -31,7 +31,7 @@ public class Controller {
     @FXML
     private Label labelPassword;
 
-    private Generator generator = new Generator();
+    private final Generator generator = new Generator();
 
     private int currentSliderValue = 0;
 
@@ -45,7 +45,7 @@ public class Controller {
 
         //Set the initial slider value
         sliderPasswordLength.valueProperty().addListener(
-                new ChangeListener<Number>() {
+                new ChangeListener<>() {
                     public void changed(ObservableValue<? extends Number > observable, Number oldValue, Number newValue) {
                         if (currentSliderValue != newValue.intValue()) {
                             currentSliderValue = newValue.intValue();
@@ -75,33 +75,17 @@ public class Controller {
     @FXML
     protected void onCheckboxClick(ActionEvent e) {
         //Lowercase
-        if (e.getSource().equals(cbLowercase)) {
-            if (cbLowercase.isSelected())
-                generator.updateCharTypeList(CharType.LOWERCASE, true);
-            else
-                generator.updateCharTypeList(CharType.LOWERCASE, false);
-        }
+        if (e.getSource().equals(cbLowercase))
+            generator.updateCharTypeList(CharType.LOWERCASE, cbLowercase.isSelected());
         //Uppercase
-        else if (e.getSource().equals(cbUppercase)) {
-            if (cbUppercase.isSelected())
-                generator.updateCharTypeList(CharType.UPPERCASE, true);
-            else
-                generator.updateCharTypeList(CharType.UPPERCASE, false);
-        }
+        else if (e.getSource().equals(cbUppercase))
+            generator.updateCharTypeList(CharType.UPPERCASE, cbUppercase.isSelected());
         //Numbers
-        else if (e.getSource().equals(cbNumbers)) {
-            if (cbNumbers.isSelected())
-                generator.updateCharTypeList(CharType.NUMBER, true);
-            else
-                generator.updateCharTypeList(CharType.NUMBER, false);
-        }
+        else if (e.getSource().equals(cbNumbers))
+            generator.updateCharTypeList(CharType.NUMBER, cbNumbers.isSelected());
         //Symbols
-        else if (e.getSource().equals(cbSymbols)) {
-            if (cbSymbols.isSelected())
-                generator.updateCharTypeList(CharType.SYMBOL, true);
-            else
-                generator.updateCharTypeList(CharType.SYMBOL, false);
-        }
+        else if (e.getSource().equals(cbSymbols))
+            generator.updateCharTypeList(CharType.SYMBOL, cbSymbols.isSelected());
 
         //Generate a new password with the new settings
         regeneratePassword();
