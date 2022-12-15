@@ -13,10 +13,10 @@ enum CharType {
 
 public class Generator {
 
-    private List<Integer> symbolAsciiCharacters;
-    private List<CharType> listsToGenerateFrom;
+    private final List<Integer> symbolAsciiCharacters;
+    private final List<CharType> listsToGenerateFrom;
 
-    private Random rng;
+    private final Random rng;
 
     public Generator() {
         this.symbolAsciiCharacters = createSymbolSet();
@@ -72,7 +72,7 @@ public class Generator {
     }
 
     private int getRandomLetter(boolean isLower) {
-        int random = 0;
+        int random;
 
         if (isLower)
             random = rng.nextInt(97,123);
@@ -83,16 +83,13 @@ public class Generator {
     }
 
     private int getRandomNumber() {
-        int random = rng.nextInt(48,58);
-
-        return random;
+        return rng.nextInt(48,58);
     }
 
     private int getRandomSymbol() {
         int random = rng.nextInt(0, symbolAsciiCharacters.size());
-        int randomSymbolKey = symbolAsciiCharacters.get(random);
 
-        return randomSymbolKey;
+        return symbolAsciiCharacters.get(random);
     }
 
 }
