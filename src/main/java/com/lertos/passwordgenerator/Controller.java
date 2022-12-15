@@ -59,19 +59,31 @@ public class Controller {
     protected void onCheckboxClick(ActionEvent e) {
         //Lowercase
         if (e.getSource().equals(cbLowercase)) {
-
+            if (cbLowercase.isSelected())
+                generator.setUseLowercase(true);
+            else
+                generator.setUseLowercase(false);
         }
         //Uppercase
         else if (e.getSource().equals(cbUppercase)) {
-
+            if (cbUppercase.isSelected())
+                generator.setUseUppercase(true);
+            else
+                generator.setUseUppercase(false);
         }
         //Numbers
         else if (e.getSource().equals(cbNumbers)) {
-
+            if (cbNumbers.isSelected())
+                generator.setUseNumbers(true);
+            else
+                generator.setUseNumbers(false);
         }
         //Symbols
         else if (e.getSource().equals(cbSymbols)) {
-
+            if (cbSymbols.isSelected())
+                generator.setUseSymbols(true);
+            else
+                generator.setUseSymbols(false);
         }
     }
 
