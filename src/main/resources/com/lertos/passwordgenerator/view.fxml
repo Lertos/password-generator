@@ -58,7 +58,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
             <Button fx:id="randomizeButton" mnemonicParsing="false" onAction="#onButtonClick" text="Randomize" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Copy" />
+            <Button fx:id="copyButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onButtonClick" text="Copy" />
          </children>
       </HBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">

@@ -8,10 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 
 public class Controller {
     @FXML
     private Button randomizeButton;
+    @FXML
+    private Button copyButton;
     @FXML
     private CheckBox cbLowercase;
     @FXML
@@ -61,6 +65,11 @@ public class Controller {
             regeneratePassword();
         }
         //Copy button
+        else if (e.getSource().equals(copyButton)) {
+            ClipboardContent content = new ClipboardContent();
+            content.putString(labelPassword.getText());
+            Clipboard.getSystemClipboard().setContent(content);
+        }
     }
 
     @FXML
